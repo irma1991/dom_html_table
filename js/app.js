@@ -1,35 +1,22 @@
-function generate_table() {
+const button = document.querySelector('button');
+const eilute = document.getElementById('eilutes');
+const stulpelis = document.getElementById('stulpeliai');
 
-  // get the reference for the body
-  var body = document.getElementsByTagName("body")[0];
 
-  // creates a <table> element and a <tbody> element
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
+button.addEventListener('click', pieskLentele)
 
-  // creating all cells
-  for (var i = 0; i < 4; i++) {
-    // creates a table row
-    var row = document.createElement("tr");
+function pieskLentele() {
 
-    for (var j = 0; j < 4; j++) {
-      // Create a <td> element and a text node, make the text
-      // node the contents of the <td>, and put the <td> at
-      // the end of the table row
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode("Some table info...");
-      cell.appendChild(cellText);
-      row.appendChild(cell);
+    //console.log(eilute.value);
+    //console.log(stulpelis.value);
+    let psk = "<table>";
+    for (let i=0; i<eilute.value; i++){
+        psk +="<tr>";
+        for (let j=0; j<stulpelis.value; j++) {
+            psk +="<td>"+j+"</td>";
+        }
+        psk+="</tr>";
     }
-
-    // add the row to the end of the table body
-    tblBody.appendChild(row);
-  }
-
-  // put the <tbody> in the <table>
-  tbl.appendChild(tblBody);
-  // appends <table> into <body>
-  body.appendChild(tbl);
-  // sets the border attribute of tbl to 1;
-  tbl.setAttribute("border", "1");
+    psk+="</table>";
+    document.getElementById("lentele").innerHTML=psk;
 }
